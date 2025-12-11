@@ -1,3 +1,4 @@
+```mermaid
 %% Frontend Flow - Image Shrinker
 sequenceDiagram
   participant U as User
@@ -18,3 +19,4 @@ sequenceDiagram
   UI->>Blob: createObjectURL -> Download link
   U->>UI: click download
   UI-->>U: file saved
+```

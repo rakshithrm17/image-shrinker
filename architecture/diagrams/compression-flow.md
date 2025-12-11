@@ -1,16 +1,26 @@
+```mermaid
 %% Compression Flow - Image Shrinker
 flowchart TD
   F[File Input] --> M{Detect format}
-  M -->|JPEG/PNG/WebP| BM[Browser decode (createImageBitmap)]
+  
+  M -->|JPEG/PNG/WebP| BM[Browser decode using createImageBitmap]
   M -->|HEIC| WASM_HEIC[WASM HEIC decoder]
+
   BM --> ORIENT[Apply EXIF orientation]
   WASM_HEIC --> ORIENT
+
   ORIENT --> RESAMPLE{Downscale?}
+
   RESAMPLE -->|No| ENCODE[Encode with chosen codec]
-  RESAMPLE -->|Yes| RESAMPLE_PROC[High-quality resampling (Lanczos)]
+  RESAMPLE -->|Yes| RESAMPLE_PROC[High-quality resampling — Lanczos]
+
   RESAMPLE_PROC --> ENCODE
+
   ENCODE --> METADATA{Keep EXIF?}
+
   METADATA -->|Yes| ATTACH[Attach selected EXIF]
   METADATA -->|No| STRIP[Strip metadata]
+
   ATTACH --> BLOB[Create Blob / Download]
   STRIP --> BLOB
+```
