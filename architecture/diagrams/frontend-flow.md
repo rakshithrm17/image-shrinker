@@ -1,0 +1,22 @@
+```mermaid
+%% Frontend Flow - Image Shrinker
+sequenceDiagram
+  participant U as User
+  participant UI as React UI
+  participant EXIF as EXIF Parser
+  participant Worker as WebWorker (WASM)
+  participant Codec as WASM Codec
+  participant Blob as Blob / Download
+
+  U->>UI: Upload image (drag & drop)
+  UI->>EXIF: read metadata & orientation
+  EXIF-->>UI: metadata
+  UI->>UI: show preview & options
+  UI->>Worker: send image + settings (transferable)
+  Worker->>Codec: decode -> resample -> encode
+  Codec-->>Worker: encoded ArrayBuffer
+  Worker-->>UI: send back encoded buffer
+  UI->>Blob: createObjectURL -> Download link
+  U->>UI: click download
+  UI-->>U: file saved
+```
