@@ -1,6 +1,6 @@
 # 📦 Image Shrinker — High-Quality Image Compression (Client-Side Only)
 
-**Image Shrinker** is a privacy-first, browser-based tool that reduces image file sizes **without losing visual quality** — especially useful for large iPhone photos.  
+**Image Shrinker** is a privacy-first, browser-based tool that reduces image file sizes **without losing visual quality** — especially useful for large high quality photo.  
 All processing happens **locally inside your device using WebAssembly (WASM)**.
 
 ✨ **No uploads. No servers. No tracking. Zero data leaves your device.**
